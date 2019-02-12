@@ -1,0 +1,23 @@
+{
+  "name": "apidoc-validator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shawn211/apidoc-validator.git"
+  },
+  "author": "Shawn211",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "validator": "^10.11.0"
+  }
+}

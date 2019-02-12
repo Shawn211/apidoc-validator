@@ -30,8 +30,8 @@ module.exports = async function (apiDocJsonPath) {
         logger.info('[RAW PARAMS]', raw);
         try {
           // 可能会过滤无关参数
-          req.apiDoc = vdtor.validate(route, method, raw);
-          logger.info('[APIDOC PARAMS]', req.apiDoc);
+          req.apidoc = vdtor.validate(route, method, raw);
+          logger.info('[APIDOC PARAMS]', req.apidoc);
           next();
         } catch (err) {
           logger.error(err);

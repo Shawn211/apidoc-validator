@@ -15,11 +15,14 @@ async function init(app) {
     app.use(bodyParser.urlencoded({ limit: '2mb', extended: true, keepExtensions: true }));
 
     let validator = (await require('./index')(apiDocJsonPath)).express;
+    let generator = (await require('./index')(apiDocJsonPath)).generator;
+    let generatorDemo = (await require('./index')(apiDocJsonPath)).generatorDemo;
 
-    app.route('/user/need/save/:phone').post(validator('/user/need/save', 'POST'), (req, res) => { res.json({ code: 0 }) });
-    app.route('/user/:id').get(validator('/user/:id', 'GET'), (req, res) => { res.json({ code: 0 }) });
-    app.route('/user').post(validator('/user', 'POST'), (req, res) => { res.json({ code: 0 }) });
-    app.route('/user/:id').put(validator('/user/:id', 'PUT'), (req, res) => { res.json({ code: 0 }) });
+    app.route('/test').get(generatorDemo('/test', 'get'), (req, res) => {return res.json({ code: 0 }) });
+    app.route('/user/need/save/:phone').post(validator('/user/need/save', 'POST'), generator('/user/need/save', 'POST'), (req, res) => {return res.json({ code: 0 }) });
+    app.route('/user/:id').get(validator('/user/:id', 'get'), generator('/user/:id', 'get'), (req, res) => {return res.json({ code: 0 }) });
+    app.route('/user').post(validator('/user', 'post'), generator('/user', 'post'), (req, res) => {return res.json({ code: 0 }) });
+    app.route('/user/:id').put(validator('/user/:id', 'put'), generator('/user/:id', 'put'), (req, res) => {return res.json({ code: 0 }) });
 }
 
 app.listen(8888, function () {
